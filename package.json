@@ -24,6 +24,7 @@
     "update": "ng update @nrwl/workspace",
     "update:check": "ng update",
     "workspace-schematic": "nx workspace-schematic",
+    "schematic:casting:feature-module": "yarn workspace-schematic feature-module --project=casting",
     "dep-graph": "nx dep-graph",
     "help": "nx help"
   },
