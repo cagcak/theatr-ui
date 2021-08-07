@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "projects": {
+    "casting": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/casting",
+      "sourceRoot": "apps/casting/src",
+      "prefix": "theatr",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/casting",
+            "index": "apps/casting/src/index.html",
+            "main": "apps/casting/src/main.ts",
+            "polyfills": "apps/casting/src/polyfills.ts",
+            "tsConfig": "apps/casting/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/casting/src/favicon.ico",
+              "apps/casting/src/assets"
+            ],
+            "styles": ["apps/casting/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/casting/src/environments/environment.ts",
+                  "with": "apps/casting/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "casting:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "casting:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "casting:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/casting/tsconfig.app.json",
+              "apps/casting/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/casting/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/casting/jest.config.js",
+            "tsConfig": "apps/casting/tsconfig.spec.json",
+            "setupFile": "apps/casting/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "casting-e2e": {
+      "root": "apps/casting-e2e",
+      "sourceRoot": "apps/casting-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/casting-e2e/cypress.json",
+            "tsConfig": "apps/casting-e2e/tsconfig.e2e.json",
+            "devServerTarget": "casting:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "casting:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/casting-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/casting-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "casting"
+}
