@@ -1,0 +1,17 @@
+import { Organisms<%=classify(name)%>Component } from './organisms-<%=dasherize(name)%>.component';
+import { async, TestBed } from '@angular/core/testing';
+
+describe('Organisms<%=classify(name)%>Component', () => {
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [Organisms<%=classify(name)%>Component]
+    }).compileComponents();
+  }));
+
+  it('should created', () => {
+    const fixture = TestBed.createComponent(Organisms<%=classify(name)%>Component);
+    const app = fixture.debugElement.componentInstance;
+
+    expect(app).toBeTruthy();
+  });
+});

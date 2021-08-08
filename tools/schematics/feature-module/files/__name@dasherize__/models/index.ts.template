@@ -1,0 +1,2 @@
+export * from './<%=dasherize(name)%>-form';
+export * from './<%=dasherize(name)%>';

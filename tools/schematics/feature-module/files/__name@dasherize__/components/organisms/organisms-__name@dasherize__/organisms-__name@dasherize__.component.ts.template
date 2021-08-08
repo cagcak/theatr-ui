@@ -1,0 +1,28 @@
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { <%=classify(name)%>FormConsts } from '../../../consts';
+
+@Component({
+  selector: 'theatr-organisms-<%=dasherize(name)%>',
+  templateUrl: './organisms-<%=dasherize(name)%>.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class Organisms<%=classify(name)%>Component implements OnInit {
+  @Input()
+  someSelector: string;
+
+  <%=camelize(name)%>Form: FormGroup;
+
+  constructor(private store: Store, private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.build<%=camelize(name)%>Form();
+  }
+
+  private build<%=camelize(name)%>Form(): void {
+    this.<%=camelize(name)%>Form = this.fb.group({
+      [<%=classify(name)%>FormConsts.EXAMPLE_FORM_CONTROL_NAME]: [null],
+    });
+  }
+}

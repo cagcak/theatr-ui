@@ -1,0 +1,9 @@
+// Example: Reactive form props
+export interface <%=classify(name)%>FormProps {
+  exampleFormControlName: string;
+}
+
+// Example: In case of ngxs form
+export interface <%=classify(name)%>Form {
+  [prop: string]: <%=classify(name)%>FormProps;
+};
