@@ -1,0 +1,18 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { <%=classify(name)%>State } from '../../states';
+
+@Component({
+  selector: 'theatr-<%=dasherize(name)%>',
+  template: `
+    <theatr-organisms-<%=dasherize(name)%>
+      [someSelector]="someSelector$ | async"
+    ></theatr-organisms-<%=dasherize(name)%>>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class <%=classify(name)%>Component {
+  @Select(<%=classify(name)%>State.get<%=classify(name)%>Form)
+  someSelector$: Observable<string>;
+}

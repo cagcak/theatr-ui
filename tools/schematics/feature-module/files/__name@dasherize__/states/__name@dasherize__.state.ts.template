@@ -1,0 +1,19 @@
+import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { <%=classify(name)%>ExampleAction } from '../actions';
+import { <%=classify(name)%> } from '../models';
+
+@State<<%=classify(name)%>.State>(<%=classify(name)%>.OPTIONS)
+export class <%=classify(name)%>State {
+  @Selector()
+  static get<%=classify(name)%>Form({ <%=camelize(name)%>Form }: <%=classify(name)%>.State) {
+    return <%=camelize(name)%>Form;
+  }
+
+  @Action(<%=classify(name)%>ExampleAction)
+  <%=camelize(name)%>ExampleAction(
+    { patchState }: StateContext<<%=classify(name)%>.State>,
+    { payload }: <%=classify(name)%>ExampleAction
+  ) {
+    return null;
+  }
+}

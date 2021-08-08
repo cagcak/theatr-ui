@@ -1,0 +1,5 @@
+export class <%=classify(name)%>ExampleAction {
+  static readonly type = '[<%=classify(name)%>ExampleAction] <%=titlize(name)%> Example Action';
+  static readonly desc = '<%=titlize(name)%> Example Action';
+  constructor(public payload: number) {}
+}

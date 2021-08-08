@@ -1,0 +1,18 @@
+import { TestBed, inject } from '@angular/core/testing';
+import { <%=classify(name)%>Resolver } from './<%=dasherize(name)%>.resolver';
+
+describe('<%=classify(name)%>Resolver', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [<%=classify(name)%>Resolver]
+    });
+  });
+
+  it('should created <%=classify(name)%>Resolver', inject(
+    [<%=classify(name)%>Resolver],
+    (service: <%=classify(name)%>Resolver) => {
+      expect(service).toBeTruthy();
+    }
+  ));
+});
+

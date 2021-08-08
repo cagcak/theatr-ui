@@ -1,0 +1,8 @@
+import { <%=classify(name)%>ExampleAction } from './<%=dasherize(name)%>.actions';
+
+describe('[<%=classify(name)%>ExampleAction] <%=titlize(name)%> Example Action', () => {
+  it('<%=classify(name)%>ExampleAction Action', () => {
+    expect(<%=classify(name)%>ExampleAction.type).toBe('[<%=classify(name)%>ExampleAction] <%=titlize(name)%> Example Action');
+    expect(<%=classify(name)%>ExampleAction.desc).toBe('<%=titlize(name)%> Example Action');
+  });
+});
